@@ -17,6 +17,7 @@
 body, input, select {
     font-family: 'Archivo', sans-serif;
     background-color: var(--color-background);
+    outline: none;
 }
 
 
@@ -56,6 +57,18 @@ h3 {
     grid-template-areas:
     "header"
     "headline"
+    "input"
+    "featured"
+    "card-content"
+    "footer"
+    ;
+}
+
+.structure-posts {
+    display: grid;
+    grid-template-areas:
+    "header"
+    "headline"
     "description"
     "info"
     "content"
@@ -65,11 +78,16 @@ h3 {
     ;
 }
 
+
+
+
 .description,
 .content,
 .info,
-.featured {
-    margin: 50px 22%;
+.featured,
+.input,
+.card-content {
+    padding: 50px 22%;
 }
 
 .header {
@@ -89,7 +107,7 @@ h3 {
     margin-left: 20px;
 }
 
-.headline {
+ .headline {
     grid-area: headline;
     background: url(/images/fundo-1.png) no-repeat center;
     height: 80vh;
@@ -97,7 +115,47 @@ h3 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
 }
+
+.structure .headline {
+    position: relative;
+}
+
+.headline img {
+    width: 50px;
+}
+
+.left {
+    
+    position: absolute;
+    left: 50px;
+}
+
+.right {
+    
+    position: absolute;
+    right: 50px;
+}
+
+.post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.post img {
+    width: 20px!important;
+    margin-right: 20px;
+}
+
+
+.post span {
+    color: var(--color-text);
+    font-size: 18px;
+}
+
 .headline h1{
     -webkit-text-stroke: 2px #fff;
     width: 500px;
@@ -111,11 +169,38 @@ h3 {
     cursor: pointer;
 }
 
-.container {
+.input input {
+    width: calc(100% - 70px);
+    height: 50px;
+    border-radius: 50px;
+    border: 3px solid var(--color-white);
+    padding-left: 80px;
+    font-size: 18px;
+    margin-bottom: 25px;
+    color: var(--color-white);
+}
+
+.search {
+    position: relative;
+}
+
+.loupe {
+    position: absolute;
+    width: 30px;
+    top: 12px;
+    left: 15px;
+    cursor: pointer;
+}
+
+.categories {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+}
+
+.categories a {
+    color: var(--color-primary);
+    text-decoration: none;
+
 }
 
 .info {
@@ -265,11 +350,66 @@ h3 {
 
 }
 
-@media(max-width: 1000) {
+@media(max-width: 1000px) {
+    .card-container {
+       grid-template-columns: 1fr; 
+       overflow: initial;
+    }
+
+    .featured .card {
+        width: 100%;
+        padding: 0;
+    }
+
+    .description, .content, .info, .featured {
+        padding: 50px 5%;
+    }
+
+    .user p, .share p {
+        font-size: 16px;
+    }
+
+    .author img {
+        width: 70px;
+    }
+
+    .social img {
+        width: 35px;
+    }
 
 }
 
 @media(max-width: 600px) {
+    
+    .header {
+        flex-direction: column;
+    }
+
+    .header .menu {
+        margin-top: 20px;
+    }
+    
+    .headline h1 {
+        font-size: 48px;
+        width: 100%;
+    }
+
+    .social img {
+        width: 20px;
+    }
+
+    .social img + img {
+        margin-left: 10px;
+    }
+
+    .author img {
+        margin: 40px;
+    }
+
+    .user .name {
+        margin-bottom: 17px;
+    }
+
 
 }
 
